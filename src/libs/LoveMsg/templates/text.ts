@@ -64,7 +64,7 @@ ${sayLove.content}\n`
 『每日英语 ${dayjs(dayEnglish.date).format('ll')}』${dayEnglish.content}\n`
   }
   //笑话
-  if(joke){
+  if(false){
     text += '\n笑一笑，十年少，开心一刻喽:\n请欣赏以下『雷人笑话』😝\n'
     text += ` ${joke.map(n => `『${n.title}』${n.content}`).join('\n\n')}`
   }
