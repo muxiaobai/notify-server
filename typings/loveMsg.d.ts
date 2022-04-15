@@ -1,4 +1,30 @@
 // 定义天气返回值类型
+interface IEWeatherResponse {
+  /** 昨日 */
+  yesterday: IEWeatherResponseProps
+  /** 预测 */
+  forecast: IEWeatherResponseProps[]
+  /** 城市 */
+  city: string
+  /** 温度 */
+  wendu: string
+  /** 提醒 */
+  ganmao: string
+}
+interface IEWeatherResponseProps {
+  /** 2021-12-18 */
+  date: string
+  /** 晴 */
+  type: string
+  /** 西南风 */
+  fengxiang: string
+  /** 3-4级 */
+  fengli: string
+  /** 最高温度 8 */
+  high: string
+  /** 最低温度 -2 */
+  low: string
+}
 interface IWeatherResponseProps {
   /** 2021-12-18 */
   date: string

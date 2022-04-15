@@ -16,7 +16,8 @@ instance.interceptors.response.use(
     // TODO: 这里只针对符合该条件的接口
     if (res.code === 200)
       return res.newslist
-
+    if(res.status === 1000)
+      return res.data
     return undefined
   },
   (error) => {

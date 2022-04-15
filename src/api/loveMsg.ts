@@ -6,7 +6,7 @@ import { getTian } from '../utils/http'
  */
 enum LoveMsgURL {
   // 天气
-  eWeather='http://wthrcdn.etouch.cn/weather_mini?city=',
+  eWeather='http://wthrcdn.etouch.cn/weather_mini',
   // 天气接口：默认获取最近7天的数据
   weather = 'http://api.tianapi.com/tianqi/index',
   // 每日简报
@@ -51,10 +51,10 @@ class API {
    * 接口 ++++++++++
    */
  // 天气
-  async getEWeather(city_name: string): Promise<IWeatherResponseProps> {
+  async getEWeather(city_name: string): Promise<IEWeatherResponse> {
     const res = await getTian({ url: LoveMsgURL.eWeather, params: { city: city_name } })
     console.log(res)
-    return res?.[0]
+    return res
   }
   // 天气
   async getWeather(city_name: string): Promise<IWeatherResponseProps> {

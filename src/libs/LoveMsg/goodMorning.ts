@@ -7,6 +7,7 @@ import { getConfig } from '../../utils/getConfig'
 import { wxNotify } from '../WxNotify'
 import { textTemplate } from './templates/text'
 import { textCardTemplate } from './templates/textcard'
+import { textWeatherTemplate } from './templates/textWeather'
 
 const CONFIG = getConfig().loveMsg
 
@@ -49,6 +50,22 @@ const goodWord = async () => {
 }
 
 // 天气信息
+const eWeatherInfo = async () => {
+  try {
+    const weather = await API.getEWeather(CONFIG.city_name)
+    if (weather) {
+      const lunarInfo = await API.getLunarDate('2022-04-15')
+      const template = textWeatherTemplate(weather,lunarInfo)
+      console.log('eweatherInfo', template)
+
+      // 发送消息
+      await wxNotify(template)
+    }
+  } catch (error) {
+    console.log('eweatherInfo:err', error)
+  }
+}
+// 天气信息
 const weatherInfo = async () => {
   try {
     const weather = await API.getWeather(CONFIG.city_name)
@@ -67,6 +84,7 @@ const weatherInfo = async () => {
 
 // goodMorning
 export const goodMorning = async () => {
-  await weatherInfo()
+  await eWeatherInfo()
+  // await weatherInfo()
   await goodWord()
 }
