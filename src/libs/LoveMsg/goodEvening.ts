@@ -65,7 +65,7 @@ const getNews = async() => {
 
     // 发送消息
     const times = Math.ceil(result.length / 8)
-    for (let i = 0; i < times; i++) {
+    for (let i = 0; i < 1; i++) {
       const start = 8 * i
       const end = 8 * i + 8 < result.length ? 8 * i + 8 : result.length
       console.log(result.length, start, end)
