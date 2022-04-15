@@ -81,12 +81,13 @@ const getNews = async() => {
 
 // 获今日取故事
 const getStory = async() => {
-  const res = await API.getStorybook()
-  console.log(res);
+  const res = await API.getStorybook('2')
+  const wanan = await API.getWanan()
+  console.log(wanan);
   const template = {
     msgtype: 'text',
     text: {
-      content: `给鱼崽的今日份睡前故事来喽：
+      content: `${wanan.content}\n\n给鱼崽的今日份睡前故事来喽：
 🌑🌒🌓🌔🌕🌝😛\n
 『${res.title}』
 ${res.content}`,

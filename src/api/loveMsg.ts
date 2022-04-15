@@ -31,6 +31,8 @@ enum LoveMsgURL {
   caihongpi = 'http://api.tianapi.com/caihongpi/index',
   // 励志古言
   inspirationalWord = 'http://api.tianapi.com/lzmy/index',
+  //晚安语句
+  wanan ='http://api.tianapi.com/wanan/index',
   // 笑话
   joke = 'http://api.tianapi.com/joke/index',
   // 一言
@@ -53,13 +55,11 @@ class API {
  // 天气
   async getEWeather(city_name: string): Promise<IEWeatherResponse> {
     const res = await getTian({ url: LoveMsgURL.eWeather, params: { city: city_name } })
-    console.log(res)
     return res
   }
   // 天气
   async getWeather(city_name: string): Promise<IWeatherResponseProps> {
     const res = await getTian({ url: LoveMsgURL.weather, params: { city: city_name } })
-    console.log(res)
     return res?.[0]
   }
 
@@ -94,8 +94,8 @@ class API {
   }
 
   // 故事大全
-  async getStorybook() {
-    const res = await getTian<StorybookProps[]>({ url: LoveMsgURL.storybook })
+  async getStorybook(type:string) {
+    const res = await getTian<StorybookProps[]>({ url: LoveMsgURL.storybook ,params:{ type} })
     return res?.[0]
   }
 
@@ -127,6 +127,12 @@ class API {
   async getJoke(num = 6) {
     const res = await getTian<JokeProps[]>({ url: LoveMsgURL.joke, params: { num } })
     return res
+  }
+  
+  // 晚安
+  async getWanan() {
+    const res = await getTian<JokeProps[]>({ url: LoveMsgURL.wanan})
+    return res?.[0]
   }
 
   // 一言
