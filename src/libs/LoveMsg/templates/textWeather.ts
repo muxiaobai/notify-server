@@ -57,30 +57,36 @@ export const textWeatherTemplate = (data: IEWeatherResponse,lunarInfo:ResLunarDa
 
   // 最高温度
   if ( wendu && +wendu <= 5) {
-    description += `
+  description += `
 哈喽哈喽~这里是来自${CONFIG.boy_name}的爱心提醒哦：
-今日最高温度仅为🥶 ${wendu}，可冷可冷了~
+今日最高温度仅为 ${wendu}度，可冷可冷了~
 ${CONFIG.girl_name}可要注意保暖哦~\n`
   }
   else if ( wendu && +wendu <= 20) {
-    description += `
+  description += `
 哈喽哈喽~这里是来自${CONFIG.boy_name}的爱心提醒哦：
-今日最高温度仅为🥶 ${wendu}，有些凉爽了~
+今日最高温度仅为 ${wendu}度，有些凉爽了~
 ${CONFIG.girl_name}可要注意加外套呀~\n`
-
+}else  if ( wendu && +wendu <= 28) {
+  description += `
+哈喽哈喽~这里是来自${CONFIG.boy_name}的爱心提醒哦：
+今日温度是 ${wendu}度，非常温暖了~
+${CONFIG.girl_name}可以外出玩耍呢~\n`
   }
   else if ( wendu && +wendu >= 28) {
-    description += `
+  description += `
 哈喽哈喽~这里是来自${CONFIG.boy_name}的爱心提醒哦：
-今日最高温度已经超过 ${wendu}，开始热起来了~
+今日最高温度已经超过 ${wendu}度，开始热起来了~
 ${CONFIG.girl_name}可以吃西瓜，喝加冰奶茶啦~\n`
-  }else{
-    description += `
-哈喽哈喽~这里是来自${CONFIG.boy_name}的爱心提醒哦：
-今日温度是 ${wendu}，非常温暖了~
-${CONFIG.girl_name}可以外出玩耍呢~\n`
+  
 }
-  // 生活指数提示
+if(forecast){
+  let forecast_description = "近几天天气预报:\n" 
+  for (let i = 0; i < forecast.length; i++) {
+    forecast_description += forecast[i].date +"："+forecast[i].type+","+forecast[i].low +","+forecast[i].high +" "+ forecast[i].fengxiang +forecast[i].fengli + "\n"
+  }
+  description += forecast_description
+}  // 生活指数提示
   if (ganmao) {
     description += `另外:${ganmao}\n`
   }
