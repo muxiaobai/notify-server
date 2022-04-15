@@ -24,11 +24,11 @@ const goodWord = async () => {
       API.getOneMagazines(), // one杂志
       API.getNetEaseCloud(), // 网易云热评
       API.getDayEnglish(), // 每日英语
-      API.getEWeather(CONFIG.city_name),
+
     ])
 
     // 过滤掉异常数据
-    const [sayLove, caiHongpi, oneWord, songLyrics, oneMagazines, netEaseCloud, dayEnglish,weather] =
+    const [sayLove, caiHongpi, oneWord, songLyrics, oneMagazines, netEaseCloud, dayEnglish] =
       dataSource.map((n) => (n.status === 'fulfilled' ? n.value : null))
 
     // 对象写法
@@ -40,13 +40,16 @@ const goodWord = async () => {
       oneMagazines,
       netEaseCloud,
       dayEnglish,
-      weather,
     }
 
     const template = textTemplate(data)
-    console.log('goodWord', template)
 
-    wxNotify(template)
+    const res = await API.getJoke()
+    let text = '\n笑一笑，十年少，开心一刻喽:\n请欣赏以下『雷人笑话』😝\n'
+    text += ` ${res.map(n => `『${n.title}』${n.content}`).join('\n\n')}`
+    console.log('goodWord', template+text)
+
+    wxNotify(template+text)
   } catch (error) {
     console.log('goodWord:err', error)
   }
@@ -84,10 +87,30 @@ const weatherInfo = async () => {
     console.log('weatherInfo:err', error)
   }
 }
+const goodJoke = async ()  => {
+  const res = await API.getJoke()
 
+  let text = '笑一笑，十年少，开心一刻喽:\n'
+
+  text += `
+请欣赏以下雷人笑话😝\n`
+
+  text += `
+${res.map(n => `『${n.title}』${n.content}`).join('\n\n')}`
+
+  const template = {
+    msgtype: 'text',
+    text: {
+      content: text,
+    },
+  }
+
+  await wxNotify(template)
+}
 // goodMorning
 export const goodMorning = async () => {
+  await goodWord()
+  await goodJoke()
   await eWeatherInfo()
   // await weatherInfo()
-  await goodWord()
 }

@@ -82,6 +82,7 @@ const getNews = async() => {
 // 获今日取故事
 const getStory = async() => {
   const res = await API.getStorybook()
+  console.log(res);
   const template = {
     msgtype: 'text',
     text: {
