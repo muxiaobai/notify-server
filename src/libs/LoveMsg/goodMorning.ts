@@ -87,5 +87,5 @@ const weatherInfo = async () => {
 export const goodMorning = async () => {
   await eWeatherInfo()
   // await weatherInfo()
-  // await goodWord()
+  await goodWord()
 }
