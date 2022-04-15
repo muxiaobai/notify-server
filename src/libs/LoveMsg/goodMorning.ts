@@ -108,7 +108,7 @@ ${res.map(n => `『${n.title}』${n.content}`).join('\n\n')}`
 // goodMorning
 export const goodMorning = async () => {
   await goodWord()
-  await goodJoke()
+  // await goodJoke()
   await eWeatherInfo()
   // await weatherInfo()
 }
