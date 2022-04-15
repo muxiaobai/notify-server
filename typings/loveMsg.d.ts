@@ -182,4 +182,5 @@ type TextTemplateProps = {
   oneMagazines: OneMagazines | null
   netEaseCloud: NetEaseCloudProps | null
   dayEnglish: ResEnglishProps | null
+  joke: JokeProps[] | null
 }

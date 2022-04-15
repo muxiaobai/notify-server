@@ -6,9 +6,9 @@
 import dayjs, { weekToday } from '../../../utils/dayjs'
 
 export const textTemplate = (data: TextTemplateProps) => {
-  const { caiHongpi, sayLove, songLyrics, oneMagazines, netEaseCloud, oneWord, dayEnglish } = data
+  const { caiHongpi, sayLove, songLyrics, oneMagazines, netEaseCloud, oneWord, dayEnglish ,joke} = data
 
-  let text = '早安呀，我可爱的鱼崽崽~\n'
+  let text = '早安呀，鱼崽崽~\n'
 
   // 工作日/休息日，需要排除节假日
 //   const week = weekToday()
@@ -63,7 +63,11 @@ ${sayLove.content}\n`
     text += `
 『每日英语 ${dayjs(dayEnglish.date).format('ll')}』${dayEnglish.content}`
   }
-
+  //笑话
+  if(joke){
+    text += '\n笑一笑，十年少，开心一刻喽:\n请欣赏以下『雷人笑话』😝\n'
+    text += ` ${joke.map(n => `『${n.title}』${n.content}`).join('\n\n')}`
+  }
   return {
     msgtype: 'text',
     text: {
