@@ -78,17 +78,17 @@ ${CONFIG.girl_name}可以外出玩耍呢~\n`
 哈喽哈喽~这里是来自${CONFIG.boy_name}的爱心提醒哦：
 今日最高温度已经超过 ${wendu}度，开始热起来了~
 ${CONFIG.girl_name}可以吃西瓜，喝加冰奶茶啦~\n`
-  
 }
-if(forecast){
-  let forecast_description = "近几天天气预报:\n" 
-  for (let i = 0; i < forecast.length; i++) {
-    forecast_description += forecast[i].date +"："+forecast[i].type+","+forecast[i].low +","+forecast[i].high +" "+ forecast[i].fengxiang +forecast[i].fengli + "\n"
-  }
-  description += forecast_description
-}  // 生活指数提示
+  // 生活指数提示
   if (ganmao) {
     description += `另外:${ganmao}\n`
+  }
+  if(forecast){
+    let forecast_description = "近几天天气预报:\n" 
+    for (let i = 0; i < forecast.length; i++) {
+      forecast_description += forecast[i].date +"："+forecast[i].type+","+forecast[i].low +","+forecast[i].high +" "+ forecast[i].fengxiang + "\n"
+    }
+    description += forecast_description
   }
   //   if (air_tips) {
   //     description += `
