@@ -26,8 +26,8 @@ export const textWeatherTemplate = (data: IEWeatherResponse,lunarInfo:ResLunarDa
   } = data
 
   // 今日、恋爱天数
-  const today =  new Date()//`${date.replace('-', '年').replace('-', '月')}日`
-  const dateLength = dayjs('2022-04-15').diff(CONFIG.start_stamp, 'day')
+  const today =  dayjs(new Date()).format("YYYY年MM月DD日")//`${date.replace('-', '年').replace('-', '月')}日`
+  const dateLength = dayjs(new Date()).diff(CONFIG.start_stamp, 'day')
 
   // 拼接内容
   // let description = `${city} | ${today} | ${week}`
@@ -66,19 +66,19 @@ ${CONFIG.girl_name}可要注意保暖哦~\n`
     description += `
 哈喽哈喽~这里是来自${CONFIG.boy_name}的爱心提醒哦：
 今日最高温度仅为🥶 ${wendu}，有些凉爽了~
-${CONFIG.girl_name}可要注意加外套哦~\n`
+${CONFIG.girl_name}可要注意加外套呀~\n`
 
   }
   else if ( wendu && +wendu >= 28) {
     description += `
 哈喽哈喽~这里是来自${CONFIG.boy_name}的爱心提醒哦：
 今日最高温度已经超过 ${wendu}，开始热起来了~
-${CONFIG.girl_name}可以吃西瓜，喝加冰奶茶哦~\n`
+${CONFIG.girl_name}可以吃西瓜，喝加冰奶茶啦~\n`
   }else{
     description += `
 哈喽哈喽~这里是来自${CONFIG.boy_name}的爱心提醒哦：
 今日温度是 ${wendu}，非常温暖了~
-${CONFIG.girl_name}可以外出玩耍哦~\n`
+${CONFIG.girl_name}可以外出玩耍呢~\n`
 }
   // 生活指数提示
   if (ganmao) {

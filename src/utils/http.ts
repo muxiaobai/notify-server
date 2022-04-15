@@ -16,6 +16,7 @@ instance.interceptors.response.use(
     // TODO: 这里只针对符合该条件的接口
     if (res.code === 200)
       return res.newslist
+    // TODO 天气接口返回
     if(res.status === 1000)
       return res.data
     return undefined

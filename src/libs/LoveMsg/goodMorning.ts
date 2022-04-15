@@ -3,6 +3,7 @@
  * @description 说早安
  */
 import API from '../../api/loveMsg'
+import dayjs from '../../utils/dayjs'
 import { getConfig } from '../../utils/getConfig'
 import { wxNotify } from '../WxNotify'
 import { textTemplate } from './templates/text'
@@ -54,7 +55,7 @@ const eWeatherInfo = async () => {
   try {
     const weather = await API.getEWeather(CONFIG.city_name)
     if (weather) {
-      const lunarInfo = await API.getLunarDate('2022-04-15')
+      const lunarInfo = await API.getLunarDate(dayjs(new Date()).format("YYYY-MM-DD"))
       const template = textWeatherTemplate(weather,lunarInfo)
       console.log('eweatherInfo', template)
 
