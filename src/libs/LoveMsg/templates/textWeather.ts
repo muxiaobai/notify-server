@@ -54,7 +54,7 @@ export const textWeatherTemplate = (data: IEWeatherResponse,lunarInfo:ResLunarDa
 // 降雨量：${pcpn}mm\n`
 //   }
 
-
+wendu = forecast[0].high
   // 最高温度
   if ( wendu && +wendu <= 5) {
   description += `
