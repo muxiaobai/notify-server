@@ -54,29 +54,31 @@ export const textWeatherTemplate = (data: IEWeatherResponse,lunarInfo:ResLunarDa
 // 降雨量：${pcpn}mm\n`
 //   }
 
-wendu = forecast[0].high
+ let forecast_high = forecast[0].high
+ let forecast_low = forecast[0].low
+ 
   // 最高温度
-  if ( wendu && +wendu <= 5) {
+  if ( forecast_high && +forecast_high <= 5) {
   description += `
 哈喽哈喽~这里是来自${CONFIG.boy_name}的爱心提醒哦：
-今日最高温度仅为 ${wendu}度，可冷可冷了~
+今日最低温度仅为 ${forecast_low}度，可冷可冷了~
 ${CONFIG.girl_name}可要注意保暖哦~\n`
   }
-  else if ( wendu && +wendu <= 20) {
+  else if ( forecast_high && +forecast_high <= 20) {
   description += `
 哈喽哈喽~这里是来自${CONFIG.boy_name}的爱心提醒哦：
-今日最高温度仅为 ${wendu}度，有些凉爽了~
+今日最高温度仅为 ${forecast_high}度，有些凉爽了~
 ${CONFIG.girl_name}可要注意加外套呀~\n`
-}else  if ( wendu && +wendu <= 28) {
+}else  if ( forecast_high && +forecast_high <= 28) {
   description += `
 哈喽哈喽~这里是来自${CONFIG.boy_name}的爱心提醒哦：
-今日温度是 ${wendu}度，非常温暖了~
+今日最高温度是 ${forecast_high}度，非常温暖了~
 ${CONFIG.girl_name}可以外出玩耍呢~\n`
   }
-  else if ( wendu && +wendu >= 28) {
+  else if ( forecast_high && +forecast_high >= 28) {
   description += `
 哈喽哈喽~这里是来自${CONFIG.boy_name}的爱心提醒哦：
-今日最高温度已经超过 ${wendu}度，开始热起来了~
+今日最高温度已经超过 ${forecast_high}度，开始热起来了~
 ${CONFIG.girl_name}可以吃西瓜，喝加冰奶茶啦~\n`
 }
   // 生活指数提示
