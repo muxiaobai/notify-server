@@ -79,20 +79,28 @@ const getNews = async() => {
   }
 }
 
-// 获今日取故事
+// 获今日取故事 Wanan
 const getStory = async() => {
-  const res = await API.getStorybook('2')
+//   const res = await API.getStorybook('2')
   const wanan = await API.getWanan()
   console.log(wanan);
   const template = {
     msgtype: 'text',
     text: {
-      content: `${wanan.content}\n\n给鱼崽的今日份睡前故事来喽：
-🌑🌒🌓🌔🌕🌝😛\n
-『${res.title}』
-${res.content}`,
+      content: `给鱼崽的今日份睡前安慰来喽：\n\n
+      ${wanan.content}\n\n
+🌑🌒🌓🌔🌕🌝😛\n`,
     },
   }
+//    const template = {
+//     msgtype: 'text',
+//     text: {
+//       content: `${wanan.content}\n\n给鱼崽的今日份睡前故事来喽：
+// 🌑🌒🌓🌔🌕🌝😛\n
+// 『${res.title}』
+// ${res.content}`,
+//     },
+//   }
 
   await wxNotify(template)
 }
