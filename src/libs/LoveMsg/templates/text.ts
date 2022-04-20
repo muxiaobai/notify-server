@@ -61,7 +61,7 @@ ${sayLove.content}\n`
   // 每日英语
   if (dayEnglish) {
     text += `
-『每日英语 ${dayjs(dayEnglish.date).format('ll')}』${dayEnglish.content}\n`
+『每日英语 』${dayEnglish.content}\n`
   }
   //笑话
   if(false){
